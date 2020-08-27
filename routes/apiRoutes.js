@@ -17,14 +17,24 @@ module.exports = function(app) {
 
     app.delete("/api/notes/:id", function(req, res) {
         var chosen = req.params.id;
+        
+        for(const value of notesData) {
+            if(value.id == chosen) {
+                var i = notesData.indexOf(value);
+                console.log(i);
+                console.log(notesData[i]);
 
-        for (var i = 0; i < notesData.length; i++) {
-            if (chosen === notesData[i].id) {
                 notesData.splice(i, 1);
+
+                for (var i = 0; i < notesData.length; i++) {
+                    notesData[i].id = i + 1;
+                }
+
+                console.log(notesData);
+
                 fs.writeFile("./db/db.json", JSON.stringify(notesData), function(err) {
                     if (err) throw err;
                 })
-                res.json(notesData[i]);
             }
         }
     })

@@ -51,7 +51,6 @@ const renderActiveNote = () => {
 
 // Get the note data from the inputs, save it to the db and update the view
 const handleNoteSave = function () {
-  console.log("SAVE BUTTON CLICKED")
   const newNote = {
     title: $noteTitle.val(),
     text: $noteText.val(),
@@ -88,7 +87,6 @@ const handleNoteView = function () {
 
 // Sets the activeNote to and empty object and allows the user to enter a new note
 const handleNewNoteView = function () {
-  console.log("NEW-NOTE BUTTON CLICKED")
   activeNote = {};
   renderActiveNote();
 };
@@ -135,7 +133,6 @@ const renderNoteList = (notes) => {
   });
 
   $noteList.append(noteListItems);
-  console.log($noteList.length);
 };
 
 // Gets notes from the db and renders them to the sidebar

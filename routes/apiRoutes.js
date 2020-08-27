@@ -1,3 +1,4 @@
+var fs = require("fs");
 var notesData = require("../db/db.json");
 
 module.exports = function(app) {
@@ -7,6 +8,9 @@ module.exports = function(app) {
 
     app.post("/api/notes", function(req, res) {
         notesData.push(req.body);
+        fs.writeFile("./db/db.json", JSON.stringify(notesData), function(err) {
+            if (err) throw err;
+        })
         res.json(true)
     })
 

@@ -7,6 +7,7 @@ module.exports = function(app) {
     })
 
     app.post("/api/notes", function(req, res) {
+        req.body.id = notesData.length + 1;
         notesData.push(req.body);
         fs.writeFile("./db/db.json", JSON.stringify(notesData), function(err) {
             if (err) throw err;
@@ -20,6 +21,9 @@ module.exports = function(app) {
         for (var i = 0; i < notesData.length; i++) {
             if (chosen === notesData[i].id) {
                 notesData.splice(i, 1);
+                fs.writeFile("./db/db.json", JSON.stringify(notesData), function(err) {
+                    if (err) throw err;
+                })
                 res.json(notesData[i]);
             }
         }

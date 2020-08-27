@@ -5,7 +5,7 @@
 ![express](https://img.shields.io/badge/express-4.16.4-green.svg)
 ## Description
 
-The Note Taker - Express application can be used to write, save, and delete notes. The application uses an express backend and saves/retrieves note data from a JSON file. The application is deployed on Heroku following this [link](). The app uses the following HTML and API:
+The Note Taker - Express application can be used to write, save, and delete notes. The application uses an express backend and saves/retrieves note data from a JSON file. The application is deployed on Heroku following this [link](https://mysterious-castle-00244.herokuapp.com/). The app uses the following HTML and API:
 
   * GET `/notes` - Returns the `notes.html` file.
   
@@ -23,7 +23,7 @@ The application uses an express backend which is listed as a dependency. The exp
 
 ## Usage
 
-The application is deployed on Heroku following this [link](). You can also run the server within local host by running the command `node server.js` then visiting the local host link on your web browser.
+The application is deployed on Heroku following this [link](https://mysterious-castle-00244.herokuapp.com/). You can also run the server within local host by running the command `node server.js` then visiting the local host link on your web browser.
 
 ## Contributing
 

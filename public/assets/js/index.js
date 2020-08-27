@@ -81,8 +81,6 @@ const handleNoteDelete = function (event) {
       renderActiveNote();
     });
   }
-  
-  
 };
 
 // Sets the activeNote and displays it

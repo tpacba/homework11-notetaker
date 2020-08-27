@@ -1,5 +1,9 @@
 var fs = require("fs");
 var notesData = require("../db/db.json");
+const util = require("util");
+
+const writeFileAsync = util.promisify(fs.writeFile);
+const readFileAsync = util.promisify(fs.readFile);
 
 module.exports = function(app) {
     app.get("/api/notes", function(req, res) {
@@ -21,8 +25,6 @@ module.exports = function(app) {
         for(const value of notesData) {
             if(value.id == chosen) {
                 var i = notesData.indexOf(value);
-                console.log(i);
-                console.log(notesData[i]);
 
                 notesData.splice(i, 1);
 
@@ -30,11 +32,10 @@ module.exports = function(app) {
                     notesData[i].id = i + 1;
                 }
 
-                console.log(notesData);
-
-                fs.writeFile("./db/db.json", JSON.stringify(notesData), function(err) {
+                writeFileAsync("./db/db.json", JSON.stringify(notesData), function(err) {
                     if (err) throw err;
                 })
+                res.json(true);
             }
         }
     })
